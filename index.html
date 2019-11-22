@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"       content="width=device-width, initial-scale=1.0">
+    <meta name="description"    content="ReCaptcha v3 VB.net">
+    <meta name="keywords"       content="sarpyjr">
+    <meta name="author"         content="Mark Sarpy Jr.">
+
+    <!-- Site title -->
+    <title>Sarpyjr.com</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sarpyjr.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nav-smooth-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+	
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm fixed-top navbar-custom">
+        <a class="navbar-name" href="#header">Sarpyjr</a>
+    </nav> 
+
+<div id="header">
+    <div class="blog-image-header text-center">
+        <br/><br/><br/><br/><br/>      
+        <div class="page-name">How to add ReCaptcha v3 in vb.net</div>
+        <br/>
+        <i class="fas fa-info blog-icon"></i>
+        <br/><br/><br/>  
+    </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="container">
+
+    <span class="blog-header">How to add ReCaptcha v3 in vb.net</span>
+    <p>By <a href="http://sarpyjr.com/#about-me">Mark Sarpy Jr</a> - October 1, 2019</p>
+    <hr>
+    <div class="blog-text">
+    Sometime ago I tried to incorporate ReCaptcha with vb.net and I couldn't figure out exactly how to do it based on the documentation that's provided by Google. There's lots of tutorials out there that shows you how to do it for PHP but for VB I just couldn't find anything. One of the main issues I dealt with was figuring out that I had to past a post value that's created in the token that needed to be passed to the code behind that is used to validate if they are a bot or not. Once I figured that out It pretty much made everything more understandable. The way I was able to do this was looking at examples in PHP then figure out how to do the same in vb.net. Below you will find a video to show you how I did it and the example code.
+    <br/>
+    </div>
+
+    <hr>
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ed5yRQmznNA" allowfullscreen></iframe>
+    </div>
+
+    <br/><br/>
+
+    <p>aspx code</p>
+
+    <div class="card card-body bg-light" style="overflow-y: hidden;overflow-x: scroll;height:auto; width: auto;">
+    <xmp>
+        <!DOCTYPE html>
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head runat="server">
+            <title></title>
+            <script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY_HERE"></script>
+        </head>
+        <body>
+            <form id="form1" runat="server">
+                <div>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
+                    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                </div>
+            </form>
+            <script>
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('SITE_KEY_HERE', {action: 'homepage'}).then(function(token) {
+                        document.getElementById("g-recaptcha-response").value = token;
+                    });
+                });
+                </script>
+        </body>
+        </html>
+    </xmp>
+    </div>
+
+    <br>
+    <p>vb code</p>
+    
+    <div class="card card-body bg-light" style="overflow-y: hidden;overflow-x: scroll;height:auto; width: auto;">
+    <xmp >
+        Imports System.Web.Script.Serialization   
+
+        Dim url As String
+        Dim secretKey As String = "SECRET_KEY_HERE"
+        Dim recaptcha_response = Request.Form("g-recaptcha-response")
+        Label1.Text = ""
+
+        url = String.Format("https://www.google.com/recaptcha/api/siteverify?secret=" & secretKey & "&response=" & recaptcha_response)
+        Dim client As New Net.WebClient()
+        Dim stream As IO.Stream = client.OpenRead(url)
+        Dim reader As New IO.StreamReader(stream)
+        Dim jsonData As String = reader.ReadToEnd
+        Dim JsonResults As Object = New JavaScriptSerializer().Deserialize(Of Object)(jsonData)
+
+        If JsonResults("success") = True Then
+
+            'Submit request
+            'For testing only
+            '----------------------------------------------------------------------
+            Label1.Text = "<br/>"
+            Label1.Text &= "success: " & JsonResults("success") & "<br/>"
+            Label1.Text &= "score: " & JsonResults("score") & "<br/>"
+            Label1.Text &= "action: " & JsonResults("action") & "<br/>"
+            Label1.Text &= "challenge_ts: " & JsonResults("challenge_ts") & "<br/>"
+            '----------------------------------------------------------------------
+
+        Else
+
+            'Stop submit
+            'For testing only
+            '----------------------------------------------------------------------
+            Label1.Text &= "success: " & JsonResults("success") & "<br/>"
+            Label1.Text &= "errorcodes: " & JsonResults("error-codes") & "<br/>"
+            'For testing only
+            '----------------------------------------------------------------------
+
+        End If
+
+        reader.Close()        
+    </xmp>
+    </div>
+    
+
+    <br><br>
+
+    <div class="blog-text">
+        So did you have any trouble figuring it out base on the information google provide, or did you have to do your own research as well. Let me know!
+    <br/>
+    </div>
+
+    <br/><br/><br/>
+
+</div>
+
+<div class="copyright">
+	sarpyjr.com<br/>Created by Mark Sarpy
+</div>
+
+</body>
+
+</html>

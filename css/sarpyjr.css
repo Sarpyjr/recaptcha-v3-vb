@@ -1,0 +1,204 @@
+@font-face {
+    font-family: Vntfap01;
+    src: url(../font/Vntfap01.ttf);
+}
+    
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+.preview-image {
+    padding:1px;
+    border:5px solid #f4f4f4;
+    /* -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.4);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.4); */
+}
+.navbar-custom {
+    background-color: #FFFFFF;
+    opacity:0.95;
+    border: 0;
+    font-family: 'Titillium Web', sans-serif;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+}
+.navbar-name {
+    padding-left:20px;
+    color: #33CC33;
+    font-size:30px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.navbar-name:hover {
+    color: #33CC33;
+    text-decoration: none;
+}
+.navbar-name-link {
+    padding-left:20px;
+    color: rgb(112, 112, 112);
+    font-size:20px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.navbar-name-link:hover {
+    color: rgb(112, 112, 112);
+    text-decoration: none;
+}
+.image01 {
+    background-image: url("img/intro-bg.jpg") !important;
+	background-image: url("../img/intro-bg.jpg") !important;
+    /* background-color: #2D1548; */
+    /* bbackground: linear-gradient(#414141,#FFFFFF); */
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page-header {
+    background-image: url("img/intro-bg.jpg") !important;
+	background-image: url("../img/intro-bg.jpg") !important;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page-name {
+    color:white;
+    text-shadow: 2px 2px 4px #000000;        
+    font-size: 40px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.page-title {
+    color:#33cc33;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 160px;
+    font-family: 'Vntfap01';
+}
+.section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.section-bg-1 {
+    background-color:#333333;
+    color:#FFFFFF;
+}
+.section-bg-2 {
+    background-color:#FFFFFF;
+    color:#000000;
+}
+.blog-image-header {        
+    background-image: url('../img/intro-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.blog-icon {
+    font-size:80px;
+    color:#33cc33;
+    text-shadow: 2px 2px 4px #000000;
+}
+.blog-title {
+    font-family: 'Titillium Web', sans-serif;
+    color:#000000;
+    font-size:30px;
+}
+.blog-header {
+    font-size:40px;
+    color:#b36480;
+    text-shadow: 1px 1px 1px #000000;
+    font-family: 'Titillium Web', sans-serif;
+}
+.blog-header-2 {
+    font-size:35px;
+    color:#33cc33;
+    text-shadow: 1px 1px 1px #000000;
+    font-family: 'Titillium Web', sans-serif;
+}
+.blog-text {
+    font-size:20px;
+    font-family: 'Titillium Web', sans-serif;
+}
+p {
+    font-size: 20px;
+    font-family: 'Titillium Web', sans-serif;
+}
+h1 {
+    font-size: 80px;
+    font-family: 'Titillium Web', sans-serif;
+}
+h2 {
+    font-size: 60px;
+    font-family: 'Titillium Web', sans-serif;
+}
+h3 {
+    font-size: 40px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.about-image {
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.hr-pad {
+    margin-top:100px;
+}
+.copyright {
+padding:50px;
+text-align:center;
+font-size: 24px;
+color: #FFFFFF;
+background-color: #000000;
+font-family: 'Titillium Web', sans-serif;
+}
+.icon-size {
+    color:#333333;
+    font-size:60px;
+}
+
+@media only screen and (max-width: 991px) {
+    h3 {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .page-title {
+        font-size: 130px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .page-title {
+        font-size: 100px;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .page-name {      
+        font-size: 30px;
+    }
+    .page-title {
+        font-size: 70px;
+    }
+    .image01 {
+        min-height: 300px;
+    }
+    p {
+        font-size: 15px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    h1 {
+        font-size: 40px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    h2 {
+        font-size: 30px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    h3 {
+        font-size: 20px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    .section-spacer {
+        padding-bottom:50px;
+    }
+}
